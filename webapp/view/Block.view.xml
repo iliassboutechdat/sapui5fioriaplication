@@ -1,0 +1,46 @@
+<mvc:View
+	controllerName="myshopsap.controller.Block"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<l:BlockLayout id="BlockLayoutTwo">
+		<l:BlockLayoutRow>
+			
+		</l:BlockLayoutRow>
+		<l:BlockLayoutRow>
+			<l:BlockLayoutCell
+				title="The Title"
+				titleAlignment="Center"
+				class="customCellImageBackground">
+				<Text text="Donec bibendum diam nibh, sit amet ornare ante fermentum sed. Ut vulputate justo at orci sollicitudin." />
+			</l:BlockLayoutCell>
+			<l:BlockLayoutCell
+				id="cell-2"
+				title="Buy all you need"
+				backgroundColorSet="{/colorSet}"
+				backgroundColorShade="{/shades/1}">
+				<core:Icon src="sap-icon://add-activity" />
+			</l:BlockLayoutCell>
+		</l:BlockLayoutRow>
+		
+		<l:BlockLayoutRow>
+			<l:BlockLayoutCell
+				id="cell-4"
+				title="Best client deserves best prices"
+				titleAlignment="Left"
+				backgroundColorSet="{/colorSet}"
+				backgroundColorShade="{/shades/3}">
+				<Text text="Morbi id ullamcorper lorem, vestibulum facilisis velit. Ut elementum aliquam nisl a pretium. Donec auctor mattis convallis. Aenean sodales tortor nec facilisis fringilla. Nam feugiat nulla at diam sollicitudin pretium. Sed at lacus volutpat, finibus arcu ultricies, convallis elit. Aliquam sollicitudin tortor sit amet mi consequat fringilla. Fusce nisl leo, tempor et nulla id, pellentesque suscipit augue. Morbi cursus molestie tellus. Ut volutpat orci interdum, condimentum risus sed, iaculis tellus. Proin nisi eros, tristique nec tortor quis, suscipit sodales dui." />
+			</l:BlockLayoutCell>
+		</l:BlockLayoutRow>
+</l:BlockLayout>
+	<mvc:XMLView viewName="myshopsap.view.Map"></mvc:XMLView>
+
+
+
+			
+			
+	
+</mvc:View>

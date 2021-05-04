@@ -1,0 +1,37 @@
+{
+	"selectedKey": "root1",
+	"navigation": [
+		{
+			"title": "Home",
+			"icon": "sap-icon://home",
+			"expanded": true,
+			"key": "root1",
+			"items": [
+				{
+					"title": "Shop",
+					"key": "page1"
+				},
+				{
+					"title": "Sales",
+					"key": "page2"
+				}
+			]
+		},
+		{
+			"title": "Root Item",
+			"icon": "sap-icon://building",
+			"key": "root2"
+		}
+		
+	],
+	"fixedNavigation": [
+		{
+			"title": "Cart",
+			"icon": "sap-icon://cart"
+		},
+		{
+			"title": "About us",
+			"icon": "sap-icon://building"
+		}
+	]
+}

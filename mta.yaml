@@ -1,0 +1,94 @@
+_schema-version: "3.2"
+ID: myshopsap
+description: Sap ui5 shopping app
+version: 0.0.1
+modules:
+- name: myshopsap-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: myshopsap-dest-srv
+    parameters:
+      content-target: true
+  - name: myshopsap-repo-host
+    parameters:
+      service-key:
+        name: myshopsap-repo-host-key
+  - name: myshopsap-uaa
+    parameters:
+      service-key:
+        name: myshopsap-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: myshopsap_repo_host
+          ServiceInstanceName: myshopsap-html5-srv
+          ServiceKeyName: myshopsap-repo-host-key
+          sap.cloud.service: myshopsap
+        - Authentication: OAuth2UserTokenExchange
+          Name: myshopsap_uaa
+          ServiceInstanceName: myshopsap-xsuaa-srv
+          ServiceKeyName: myshopsap-uaa-key
+          sap.cloud.service: myshopsap
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: myshopsap-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: myshopsap-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - myshopsap.zip
+      name: myshopsap
+      target-path: resources/
+- name: myshopsap
+  type: html5
+  path: .
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: myshopsap-dest-srv
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: myshopsap-dest-srv
+    service-plan: lite
+- name: myshopsap-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: myshopsap-xsuaa-srv
+    service-plan: application
+- name: myshopsap-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: myshopsap-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

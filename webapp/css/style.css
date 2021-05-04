@@ -1,0 +1,11 @@
+.customCellImageBackground {
+	color: #fff;
+	background-image: url(https://c4.wallpaperflare.com/wallpaper/38/418/431/black-white-books-computer-wallpaper-preview.jpg);
+	background-size: 100% auto;
+	background-position: 0 80%;
+}
+
+.customCellImageBackground .sapUiBlockCellContent,
+.customCellImageBackground .sapUiBlockCellContent .sapMText {
+	color: #ffff;
+}

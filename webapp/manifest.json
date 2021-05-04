@@ -1,0 +1,153 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "myshopsap",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "dataSources": {
+            "mainService": {
+                "uri": "/V2/Northwind/Northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "myshopsap.view.MainView",
+            "type": "XML",
+            "async": true,
+            "id": "MainView"
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {},
+                "sap.f": {},
+                "sap.tnt": {},
+                "sap.ui.vbm": {},
+                "sap.ui.unified": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "myshopsap.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"}
+            ]
+        },
+        "routing": {
+            "config": {
+                "fullWidth":true,
+                "sample": {
+				"stretch": true,
+				"files": [
+                    "controller/MainView.controller.js",
+                    "controller/WelcomeView.controller.js",
+                    "controller/Block.controller.js",
+                    "controller/Map.controller.js",
+                    "controller/Master.controller.js",
+                    "controller/DynamicPageAnalyticalTable.controller.js",
+					"model/model.json",
+                    "view/MainView.view.xml",
+                    "view/WelcomeView.view.xml",
+                    "view/Block.view.xml",
+                    "view/Map.view.xml",
+                    "view/ListView.view.xml",
+                    "view/MasterDetail.view.xml",
+                    "view/Cart.view.xml",
+                    "view/Card.fragment.xml",
+					"manifest.json"
+				]
+			},
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "myshopsap.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMainView",
+                    "pattern": "RouteMainView",
+                    "target": [
+                        "TargetMainView"
+                    ]
+                },
+                {
+                    "name": "RouteWelcomeView",
+                    "pattern": "RouteWelcomeView",
+                    "target": [
+                        "TargetWelcomeView"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetMainView": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "MainView",
+                    "viewName": "MainView"
+                },
+                "TargetWelcomeView": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "WelcomeView",
+                    "viewName": "WelcomeView"
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "myshopsap"
+    }
+}
